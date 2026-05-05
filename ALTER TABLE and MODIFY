@@ -1,0 +1,46 @@
+ALTER TABLE = main command
+MODIFY = one option inside ALTER TABLE
+
+🔧 What is ALTER TABLE?
+
+Used to change the structure of a table
+
+We can:
+
+Add column
+Drop column
+Rename column
+Change datatype
+
+What is MODIFY?
+Used to change column definition (datatype, size, etc.)
+It is part of ALTER TABLE, not separate command
+
+Example
+
+✅ ALTER TABLE (general use)
+ALTER TABLE students
+ADD email VARCHAR(100);
+
+Adds new column
+
+✅ MODIFY (inside ALTER TABLE)
+ALTER TABLE students
+MODIFY name VARCHAR(100);
+
+Changes column size/type
+
+LTER = change table
+MODIFY = change column inside table
+
+Pro Tip
+
+Different databases use slightly different words:
+
+MySQL → MODIFY
+SQL Server → ALTER COLUMN
+
+Example:
+
+ALTER TABLE students
+ALTER COLUMN name VARCHAR(100);
