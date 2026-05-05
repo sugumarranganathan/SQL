@@ -1,0 +1,64 @@
+remove rows (data) from a table
+Table structure stays (only data is removed)
+
+Example table (before)
+
+student_id	name	age	city
+1	Ravi	20	Chennai
+2	Kumar	21	Madurai
+3	Anu	19	Coimbatore
+
+1️⃣ Delete one row
+DELETE FROM students
+WHERE student_id = 2;
+
+Result
+1 row deleted
+
+After delete
+| 1 | Ravi | 20 | Chennai |
+| 3 | Anu  | 19 | Coimbatore |
+
+2️⃣ Delete multiple rows
+DELETE FROM students
+WHERE age < 20;
+
+Result
+1 row deleted
+
+After delete
+| 1 | Ravi | 20 | Chennai |
+| 2 | Kumar | 21 | Madurai |
+
+3️⃣ Delete all rows
+DELETE FROM students;
+⚠️ Result
+All rows deleted
+
+After delete
+Empty table (0 rows)
+
+❗ Important rule
+
+Always use WHERE
+
+DELETE FROM students WHERE student_id = 1;  -- safe
+DELETE FROM students;                       -- dangerous ⚠️
+
+Simple understanding
+DELETE with WHERE → remove selected rows
+DELETE without WHERE → remove everything
+
+One-line memory trick
+
+DELETE = remove data (carefully!)
+
+
+1️⃣ Check before delete
+SELECT * FROM students WHERE age < 20;
+2️⃣ Use transaction (safe)
+START TRANSACTION;
+
+DELETE FROM students WHERE student_id = 2;
+
+ROLLBACK;  -- undo if mistake
