@@ -20,6 +20,6 @@ CREATE TABLE enrollments (
     FOREIGN KEY (course_id) REFERENCES courses(course_id)
 );
 
-✅ Result:
+Result:
 
 Tables created successfully
