@@ -1,0 +1,88 @@
+Starting Table (before all operations)
+
+student_id	name	age	email
+1	Ravi	20	ravi@gmail.com
+2	Kumar	21	kumar@gmail.com
+
+1️⃣ DROP (Delete a column)
+
+Used to remove a column permanently
+
+Code
+ALTER TABLE students
+DROP COLUMN email;
+
+Result
+Query OK, column dropped
+
+After DROP
+| student_id | name  | age |
+|------------|-------|-----|
+| 1          | Ravi  | 20  |
+| 2          | Kumar | 21  |
+
+
+email column is completely removed ❌
+
+🔄 2️⃣ RENAME (Rename a column)
+
+Used to change column name
+
+Code
+ALTER TABLE students
+RENAME COLUMN name TO full_name;
+
+Result
+Query OK, column renamed
+
+After RENAME
+
+| student_id | full_name | age |
+|------------|-----------|-----|
+| 1          | Ravi      | 20  |
+| 2          | Kumar     | 21  |
+
+Only name changed, data same 
+
+
+3️⃣ MODIFY (Change column type/size)
+
+Used to change datatype or size
+
+Code
+ALTER TABLE students
+MODIFY full_name VARCHAR(100);
+
+Result
+Query OK, column modified
+
+After MODIFY
+full_name changed from VARCHAR(50) → VARCHAR(100)
+
+Data remains unchanged 
+
+
+Final Difference
+
+Operation	Purpose	Data Impact
+
+DROP	Remove column	Data deleted ❌
+RENAME	Change column name	Data safe ✔
+MODIFY	Change datatype/size	Data safe ✔
+
+Simple understanding
+DROP = 🗑️ Remove
+RENAME = 🔄 Rename
+MODIFY = ✏️ Change
+
+One-line memory trick
+
+DROP = delete column
+RENAME = change name
+MODIFY = change structure
+
+Pro Tips
+DROP → cannot undo ❌
+
+Always check before:
+DESCRIBE students;
