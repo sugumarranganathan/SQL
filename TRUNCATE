@@ -1,0 +1,31 @@
+delete all rows from a table (very fast)
+
+Example table (before)
+student_id	name	age	city
+1	Ravi	20	Chennai
+2	Kumar	21	Madurai
+3	Anu	19	Coimbatore
+
+Code
+TRUNCATE TABLE students;
+
+Result
+
+Query OK, 0 rows affected
+
+Check after TRUNCATE
+
+SELECT * FROM students;
+
+Result
+Empty set (0 rows)
+
+Table exists, but data is gone
+
+Important points
+
+Deletes all rows 🚫 (no WHERE allowed)
+
+Faster than DELETE
+Cannot rollback (in most cases) ❌
+Resets auto-increment (very important)
