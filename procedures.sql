@@ -7,6 +7,11 @@ END //
 
 DELIMITER ;
 
+or
+
+CREATE PROCEDURE GetAllStudents()
+SELECT * FROM students;
+
 Result
 Procedure created successfully
 
