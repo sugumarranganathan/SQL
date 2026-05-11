@@ -1,0 +1,79 @@
+SHOW DATABASES; is an SQL command used to display all databases present in your MySQL server.
+
+| Database             | Meaning                                                             |
+| -------------------- | ------------------------------------------------------------------- |
+| `information_schema` | System database storing metadata about tables, columns, users, etc. |
+| `mysql`              | MySQL internal database for users, passwords, permissions           |
+| `performance_schema` | Stores MySQL performance and monitoring information                 |
+| `practice_db`        | Your own created database                                           |
+| `sys`                | Helper database for analyzing MySQL performance                     |
+
+
+---
+
+Simple explanation
+
+Think of MySQL like a cupboard.
+
+Database = separate folder
+Table = sheets/files inside folder
+
+Example:
+
+MySQL Server
+ ├── practice_db
+ │     ├── courses
+ │     ├── enrollments
+ │     └── university_students
+ │
+ ├── mysql
+ ├── sys
+ └── performance_schema
+
+
+Important databases
+practice_db
+
+This is my working database.
+
+I created tables here like:
+
+courses
+enrollments
+university_students
+System databases
+
+These are automatically created by MySQL.
+
+mysql
+
+Stores:
+
+usernames
+passwords
+permissions
+information_schema
+
+Stores information about:
+
+tables
+columns
+keys
+databases
+performance_schema
+
+Used for:
+
+monitoring
+performance tuning
+sys
+
+Provides easy performance reports.
+
+Common SQL commands
+Show databases
+SHOW DATABASES;
+Use a database
+USE practice_db;
+Show tables inside database
+SHOW TABLES;
