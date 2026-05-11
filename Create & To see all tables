@@ -1,0 +1,136 @@
+To see all tables inside practice_db:
+
+USE practice_db;
+
+SHOW TABLES;
+
+To see all data from each table:
+
+SELECT * FROM courses;
+
+SELECT * FROM enrollments;
+
+SELECT * FROM university_students;
+
+To see table structure (columns, datatype, primary key, etc.):
+
+DESCRIBE courses;
+
+DESCRIBE enrollments;
+
+DESCRIBE university_students;
+
+To see everything step-by-step in phpMyAdmin:
+
+Click practice_db
+Click table name (courses)
+Click Browse tab → shows all rows
+Click Structure tab → shows columns and keys
+
+-----
+
+This is the Structure of your courses table in SQL/MySQL.
+
+
+| Field         | Meaning                          |
+| ------------- | -------------------------------- |
+| `course_id`   | Unique ID number for each course |
+| `course_name` | Name of the course               |
+| `credits`     | Credit value of the course       |
+
+-----------
+
+Column-by-column explanation
+
+| Property         | Meaning                 |
+| ---------------- | ----------------------- |
+| `int`            | Integer number          |
+| `NO`             | Cannot be empty         |
+| `PRI`            | Primary Key             |
+| `auto_increment` | Automatically increases |
+
+
+Example:
+
+1
+2
+3
+4
+
+Every new course automatically gets next ID.
+
+Primary Key
+
+A Primary Key uniquely identifies each row in a table.
+
+Example:
+
+course_id  	course_name
+1	          Java
+2	          Python
+
+course_id cannot repeat.
+
+
+2. course_name
+
+| Property       | Meaning                   |
+| -------------- | ------------------------- |
+| `varchar(100)` | Text up to 100 characters |
+| `UNI`          | Unique value              |
+| `NO`           | Cannot be empty           |
+
+
+Example:
+
+Java
+Python
+SQL
+
+Because of UNI (Unique):
+
+Duplicate course names are NOT allowed.
+
+❌ Wrong:
+
+Java
+Java
+
+
+3. credits
+
+| Property | Meaning               |
+| -------- | --------------------- |
+| `int`    | Number                |
+| `YES`    | Can be empty (`NULL`) |
+
+
+Example:
+
+credits
+3
+4
+NULL
+
+
+Simple Real-world Meaning
+
+This table stores course information.
+
+Example data:
+
+| course_id | course_name | credits |
+| --------- | ----------- | ------- |
+| 1         | Java        | 4       |
+| 2         | Python      | 3       |
+| 3         | SQL         | 2       |
+
+
+SQL used to create this table (approximately)
+
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_name VARCHAR(100) UNIQUE NOT NULL,
+    credits INT
+);
+
