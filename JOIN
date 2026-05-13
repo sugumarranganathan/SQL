@@ -111,3 +111,16 @@ LEFT JOIN	All left + matches
 RIGHT JOIN	All right + matches
 FULL JOIN	Everything
 CROSS JOIN	All combinations
+
+-----
+
+Summary
+Join Type	Returns
+INNER JOIN	Only matching rows
+LEFT JOIN	All left + matches
+RIGHT JOIN	All right + matches
+FULL JOIN	Everything
+
+----------
+
+
