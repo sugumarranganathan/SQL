@@ -1,0 +1,206 @@
+1️⃣ INNER JOIN
+🔹 Customers Table
+
+| customer_id | name    |
+| ----------- | ------- |
+| 1           | Alice   |
+| 2           | Bob     |
+| 3           | Charlie |
+
+
+🔹 Orders Table
+| order_id | customer_id | product |
+| -------- | ----------- | ------- |
+| 101      | 1           | Laptop  |
+| 102      | 2           | Mobile  |
+| 103      | 4           | Watch   |
+
+🔹 Query
+
+SELECT Customers.customer_id, Customers.name, Orders.product
+FROM Customers
+INNER JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+
+🔹 Result Table
+| customer_id | name  | product |
+| ----------- | ----- | ------- |
+| 1           | Alice | Laptop  |
+| 2           | Bob   | Mobile  |
+
+
+==================
+
+2️⃣ LEFT JOIN
+🔹 Customers Table
+
+| customer_id | name    |
+| ----------- | ------- |
+| 1           | Alice   |
+| 2           | Bob     |
+| 3           | Charlie |
+
+
+🔹 Orders Table
+| order_id | customer_id | product |
+| -------- | ----------- | ------- |
+| 101      | 1           | Laptop  |
+| 102      | 2           | Mobile  |
+
+
+🔹 Query
+SELECT Customers.customer_id, Customers.name, Orders.product
+FROM Customers
+LEFT JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+
+🔹 Result Table
+| customer_id | name    | product |
+| ----------- | ------- | ------- |
+| 1           | Alice   | Laptop  |
+| 2           | Bob     | Mobile  |
+| 3           | Charlie | NULL    |
+
+
+✅ All rows from LEFT table (Customers)
+✅ Matching rows from Orders
+
+===================
+
+3️⃣ RIGHT JOIN
+🔹 Customers Table
+
+| customer_id | name    |
+| ----------- | ------- |
+| 1           | Alice   |
+| 2           | Bob     |
+| 3           | Charlie |
+
+
+🔹 Orders Table
+| order_id | customer_id | product |
+| -------- | ----------- | ------- |
+| 101      | 1           | Laptop  |
+| 102      | 2           | Mobile  |
+| 103      | 4           | Watch   |
+
+
+🔹 Query
+SELECT Customers.customer_id, Customers.name, Orders.product
+FROM Customers
+RIGHT JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+🔹 Result Table
+
+| customer_id | name  | product |
+| ----------- | ----- | ------- |
+| 1           | Alice | Laptop  |
+| 2           | Bob   | Mobile  |
+| NULL        | NULL  | Watch   |
+
+
+✅ All rows from RIGHT table (Orders)
+✅ Non-matching customer becomes NULL
+
+==================
+
+4️⃣ FULL JOIN
+🔹 Customers Table
+
+| customer_id | name    |
+| ----------- | ------- |
+| 1           | Alice   |
+| 2           | Bob     |
+| 3           | Charlie |
+
+
+🔹 Orders Table
+| order_id | customer_id | product |
+| -------- | ----------- | ------- |
+| 101      | 1           | Laptop  |
+| 102      | 2           | Mobile  |
+| 103      | 4           | Watch   |
+
+
+🔹 Query
+SELECT Customers.customer_id, Customers.name, Orders.product
+FROM Customers
+FULL JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+🔹 Result Table
+
+| customer_id | name    | product |
+| ----------- | ------- | ------- |
+| 1           | Alice   | Laptop  |
+| 2           | Bob     | Mobile  |
+| 3           | Charlie | NULL    |
+| NULL        | NULL    | Watch   |
+
+
+✅ All rows from both tables
+
+===============
+
+5️⃣ CROSS JOIN
+🔹 Customers Table
+
+
+| customer_id | name    |
+| ----------- | ------- |
+| 1           | Alice   |
+| 2           | Bob     |
+
+
+
+🔹 Orders Table
+| order_id | customer_id | product |
+| -------- | ----------- | ------- |
+| 101      | 1           | Laptop  |
+| 102      | 2           | Mobile  |
+
+
+
+🔹 Query
+
+SELECT Customers.name, Orders.product
+FROM Customers
+CROSS JOIN Orders;
+
+🔹 Result Table
+
+| name  | product |
+| ----- | ------- |
+| Alice | Laptop  |
+| Alice | Mobile  |
+| Bob   | Laptop  |
+| Bob   | Mobile  |
+
+✅ Every row combines with every row
+
+Formula:
+
+Rows in Table1 × Rows in Table2
+
+So:
+
+2 × 2 = 4 rows
+
+----------
+
+Final Quick Summary
+Join	Output
+INNER JOIN	Matching rows only
+LEFT JOIN	All left + matching right
+RIGHT JOIN	All right + matching left
+FULL JOIN	All rows from both
+CROSS JOIN	Every combination
+
+===========
+
+
+
+
