@@ -1,0 +1,113 @@
+In SQL, a JOIN is used to combine rows from two or more tables based on a related column between them.
+
+Think of joins like matching data from different tables using a common key.
+
+🔑 Why joins are needed
+
+In real databases, data is split into multiple tables to avoid duplication.
+
+Example:
+
+Customers table → customer info
+Orders table → order info
+
+To see which customer placed which order, you use a JOIN.
+
+📊 Types of SQL Joins
+1. INNER JOIN
+
+Returns only the rows that have matching values in both tables.
+
+SELECT *
+FROM Customers
+INNER JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+👉 Only matching records appear
+👉 Non-matching rows are excluded
+
+2. LEFT JOIN (LEFT OUTER JOIN)
+
+Returns all rows from the left table + matching rows from the right table.
+
+SELECT *
+FROM Customers
+LEFT JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+👉 All customers are shown
+👉 If no order exists → NULL values for Orders
+
+3. RIGHT JOIN (RIGHT OUTER JOIN)
+
+Returns all rows from the right table + matching rows from the left.
+
+SELECT *
+FROM Customers
+RIGHT JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+👉 All orders are shown
+👉 If no customer match → NULL for customer fields
+
+4. FULL JOIN (FULL OUTER JOIN)
+
+Returns all rows from both tables.
+
+SELECT *
+FROM Customers
+FULL JOIN Orders
+ON Customers.customer_id = Orders.customer_id;
+
+👉 Includes:
+
+Matching rows
+Non-matching from left
+Non-matching from right
+
+5. CROSS JOIN
+
+Returns the Cartesian product (every combination of rows).
+
+SELECT *
+FROM Customers
+CROSS JOIN Orders;
+
+👉 If 3 customers and 4 orders → 12 rows
+👉 Usually used carefully
+
+🧠 Simple Example
+
+Customers
+| id | name  |
+| -- | ----- |
+| 1  | Alice |
+| 2  | Bob   |
+
+
+Orders
+| id  | customer_id |
+| --- | ----------- |
+| 101 | 1           |
+| 102 | 3           |
+
+
+INNER JOIN result:
+| name  | order_id |
+| ----- | -------- |
+| Alice | 101      |
+
+LEFT JOIN result:
+| name  | order_id |
+| ----- | -------- |
+| Alice | 101      |
+| Bob   | NULL     |
+
+
+🧾 Summary
+Join Type	Returns
+INNER JOIN	Only matching rows
+LEFT JOIN	All left + matches
+RIGHT JOIN	All right + matches
+FULL JOIN	Everything
+CROSS JOIN	All combinations
