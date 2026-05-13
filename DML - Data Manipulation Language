@@ -24,7 +24,7 @@ UPDATE students
 SET email = 'john.newemail@example.com' 
 WHERE student_id = 1;
 
--- Disable safe update mode for this session
+***-- Disable safe update mode for this session****
 SET SQL_SAFE_UPDATES = 0;
 
 -- Update multiple columns
