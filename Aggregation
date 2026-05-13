@@ -1,0 +1,103 @@
+In SQL, Aggregation means:
+
+Combining multiple rows of data into a single result value.
+
+It is done using Aggregate Functions.
+
+Common Aggregate Functions
+
+| Function  | Purpose             |
+| --------- | ------------------- |
+| `COUNT()` | Counts rows         |
+| `SUM()`   | Adds values         |
+| `AVG()`   | Finds average       |
+| `MAX()`   | Finds highest value |
+| `MIN()`   | Finds lowest value  |
+
+
+Example Table: students
+
+| id | name | marks |
+| -- | ---- | ----- |
+| 1  | Arun | 80    |
+| 2  | Ravi | 90    |
+| 3  | Kavi | 70    |
+
+
+--
+
+Examples
+1. COUNT()
+SELECT COUNT(*) FROM students;
+
+Result:
+
+3
+
+Meaning:
+
+Total number of students.
+2. SUM()
+SELECT SUM(marks) FROM students;
+
+Result:
+
+240
+
+Meaning:
+
+Total marks.
+3. AVG()
+SELECT AVG(marks) FROM students;
+
+Result:
+
+80
+
+Meaning:
+
+Average marks.
+4. MAX()
+SELECT MAX(marks) FROM students;
+
+Result:
+
+90
+
+Meaning:
+
+Highest mark.
+5. MIN()
+SELECT MIN(marks) FROM students;
+
+Result:
+
+70
+
+Meaning:
+
+Lowest mark.
+GROUP BY with Aggregation
+
+Aggregation is often used with GROUP BY.
+
+Example
+SELECT department, AVG(salary)
+FROM employees
+GROUP BY department;
+
+Meaning:
+
+Finds average salary for each department.
+Easy Understanding
+
+Aggregation = Summary calculation on many rows.
+
+Like in Excel:
+
+Total
+Average
+Maximum
+Minimum
+
+All these are aggregation operations.
