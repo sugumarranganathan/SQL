@@ -1,0 +1,54 @@
+Command from Image
+REVOKE UPDATE, DELETE
+ON employees
+FROM 'employee_user';
+Simple Meaning
+
+Remove UPDATE and DELETE permissions from the user.
+
+User can no longer:
+
+❌ Modify data
+❌ Delete data
+
+But still may have:
+
+✅ SELECT permission
+
+Real Example
+REVOKE UPDATE, DELETE
+ON students
+FROM 'student1'@'localhost';
+Before REVOKE
+User	Permissions
+student1	SELECT, UPDATE, DELETE
+After REVOKE
+User	Permissions
+student1	SELECT only
+Example Table
+students table
+student_id	name
+1	Arun
+2	Ravi
+Before REVOKE
+
+User student1 can run:
+
+UPDATE students
+SET name = 'Kumar'
+WHERE student_id = 1;
+
+and
+
+DELETE FROM students
+WHERE student_id = 2;
+After REVOKE
+
+If user tries UPDATE:
+
+UPDATE students
+SET name = 'Kumar'
+WHERE student_id = 1;
+Result
+ERROR:
+Permission denied
