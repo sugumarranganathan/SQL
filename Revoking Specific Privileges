@@ -52,3 +52,21 @@ WHERE student_id = 1;
 Result
 ERROR:
 Permission denied
+
+=======
+
+Easy Understanding
+
+| Command | Meaning          |
+| ------- | ---------------- |
+| GRANT   | Give powers      |
+| REVOKE  | Take back powers |
+
+
+==========
+
+Admin → GRANT → User gets access
+
+Admin → REVOKE → User loses access
+
+=========
