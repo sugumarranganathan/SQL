@@ -191,6 +191,60 @@ So:
 
 ----------
 
+A NATURAL JOIN in SQL is a type of join that automatically joins two tables based on columns having the same name and same datatype.
+
+You do not need to write the join condition manually.
+
+Syntax
+
+SELECT *
+FROM table1
+NATURAL JOIN table2;
+
+
+Example
+Table 1: students
+| student_id | name  | dept_id |
+| ---------- | ----- | ------- |
+| 1          | Arun  | 101     |
+| 2          | Ravi  | 102     |
+| 3          | Priya | 103     |
+
+
+
+Table 2: departments
+
+| dept_id | dept_name |
+| ------- | --------- |
+| 101     | CSE       |
+| 102     | ECE       |
+| 104     | MECH      |
+
+
+SQL Query
+
+SELECT *
+FROM students
+NATURAL JOIN departments;
+How SQL Works Here
+
+Both tables contain the common column:
+
+dept_id
+
+So SQL automatically does:
+
+students.dept_id = departments.dept_id
+Result Table
+
+| student_id | name | dept_id | dept_name |
+| ---------- | ---- | ------- | --------- |
+| 1          | Arun | 101     | CSE       |
+| 2          | Ravi | 102     | ECE       |
+
+============
+
+
 Final Quick Summary
 Join	Output
 INNER JOIN	Matching rows only
@@ -200,6 +254,19 @@ FULL JOIN	All rows from both
 CROSS JOIN	Every combination
 
 ===========
+
+| Join Type       | Returns                                |
+| --------------- | -------------------------------------- |
+| INNER JOIN      | Matching rows only                     |
+| LEFT JOIN       | All left + matching right              |
+| RIGHT JOIN      | All right + matching left              |
+| FULL OUTER JOIN | All rows from both                     |
+| CROSS JOIN      | All combinations                       |
+| SELF JOIN       | Table joined with itself               |
+| NATURAL JOIN    | Automatic join using same column names |
+
+
+======
 
 
 
