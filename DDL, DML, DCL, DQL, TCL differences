@@ -1,0 +1,233 @@
+| Type | Full Form                    | Purpose                                     | Common Commands                                      |
+| ---- | ---------------------------- | ------------------------------------------- | ---------------------------------------------------- |
+| DDL  | Data Definition Language     | Used to define or modify database structure | `CREATE`, `ALTER`, `DROP`, `TRUNCATE`, `RENAME`      |
+| DML  | Data Manipulation Language   | Used to insert, update, and delete data     | `INSERT`, `UPDATE`, `DELETE`                         |
+| DQL  | Data Query Language          | Used to fetch/query data                    | `SELECT`                                             |
+| DCL  | Data Control Language        | Used to control user permissions and access | `GRANT`, `REVOKE`                                    |
+| TCL  | Transaction Control Language | Used to manage transactions in database     | `COMMIT`, `ROLLBACK`, `SAVEPOINT`, `SET TRANSACTION` |
+
+
+==============
+
+Detailed Explanation Table
+
+| Type | Works On         | Auto Commit | Example                              |
+| ---- | ---------------- | ----------- | ------------------------------------ |
+| DDL  | Table structure  | Yes         | `CREATE TABLE students (...);`       |
+| DML  | Table data       | No          | `INSERT INTO students VALUES (...);` |
+| DQL  | Fetch data       | No          | `SELECT * FROM students;`            |
+| DCL  | User permissions | Yes         | `GRANT SELECT ON students TO user1;` |
+| TCL  | Transactions     | No          | `COMMIT;`                            |
+
+
+==========
+
+Example Commands
+1. DDL Example
+CREATE TABLE students (
+    student_id INT,
+    name VARCHAR(50)
+);
+
+2. DML Example
+INSERT INTO students
+VALUES (1, 'Arun');
+
+3. DQL Example
+SELECT * FROM students;
+
+4. DCL Example
+GRANT SELECT
+ON students
+TO user1;
+
+5. TCL Example
+COMMIT;
+
+============
+
+Easy Memory Trick
+
+| Type | Shortcut Meaning     |
+| ---- | -------------------- |
+| DDL  | Design Database      |
+| DML  | Modify Data          |
+| DQL  | Query Data           |
+| DCL  | Control Access       |
+| TCL  | Control Transactions |
+
+=======
+
+| SQL Category | Main Use                  |
+| ------------ | ------------------------- |
+| DDL          | Create/modify tables      |
+| DML          | Insert/update/delete data |
+| DQL          | Retrieve data             |
+| DCL          | Manage permissions        |
+| TCL          | Save or undo transactions |
+
+===========
+
+SQL Commands with Before & After Table Examples
+1. DDL (Data Definition Language)
+Purpose
+
+Used to create or modify table structure.
+
+Commands
+
+CREATE, ALTER, DROP, TRUNCATE, RENAME
+
+Example: CREATE TABLE
+Before
+
+Database has no table named students.
+
+Query
+CREATE TABLE students (
+    student_id INT,
+    name VARCHAR(50)
+);
+After
+students table
+student_id	name
+Empty	Empty
+
+(Table structure created)
+
+2. DML (Data Manipulation Language)
+Purpose
+
+Used to insert, update, and delete data.
+
+Commands
+
+INSERT, UPDATE, DELETE
+
+INSERT Example
+Before
+student_id	name
+Empty	Empty
+Query
+INSERT INTO students
+VALUES (1, 'Arun');
+After
+student_id	name
+1	Arun
+UPDATE Example
+Before
+student_id	name
+1	Arun
+Query
+UPDATE students
+SET name = 'Ravi'
+WHERE student_id = 1;
+After
+student_id	name
+1	Ravi
+DELETE Example
+Before
+student_id	name
+1	Ravi
+Query
+DELETE FROM students
+WHERE student_id = 1;
+After
+student_id	name
+Empty	Empty
+3. DQL (Data Query Language)
+Purpose
+
+Used to fetch data.
+
+Command
+
+SELECT
+
+Before
+student_id	name
+1	Arun
+2	Priya
+Query
+SELECT * FROM students;
+Result
+student_id	name
+1	Arun
+2	Priya
+
+(No changes in table)
+
+4. DCL (Data Control Language)
+Purpose
+
+Used to control access permissions.
+
+Commands
+
+GRANT, REVOKE
+
+GRANT Example
+Before
+
+User student1 has no permission.
+
+Query
+GRANT SELECT
+ON students
+TO 'student1'@'localhost';
+After
+User	Permission
+student1	SELECT
+REVOKE Example
+Before
+User	Permission
+student1	SELECT
+Query
+REVOKE SELECT
+ON students
+FROM 'student1'@'localhost';
+After
+User	Permission
+student1	No Permission
+5. TCL (Transaction Control Language)
+Purpose
+
+Used to manage transactions.
+
+Commands
+
+COMMIT, ROLLBACK, SAVEPOINT
+
+COMMIT Example
+Before
+student_id	name
+1	Arun
+Query
+INSERT INTO students
+VALUES (2, 'Kiran');
+
+COMMIT;
+After
+student_id	name
+1	Arun
+2	Kiran
+
+(Data permanently saved)
+
+ROLLBACK Example
+Before
+student_id	name
+1	Arun
+Query
+INSERT INTO students
+VALUES (2, 'Kiran');
+
+ROLLBACK;
+After
+student_id	name
+1	Arun
+
+(Kiran row removed because transaction cancelled)
+
+----------------
+
