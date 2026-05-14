@@ -1,0 +1,105 @@
+Admin → GRANT → User gets access
+
+Admin → REVOKE → User loses access
+
+==========
+
+GRANT and REVOKE in Simple Words
+
+Think of a database like a classroom.
+
+Teacher = Database Admin
+Students = Database Users
+Permissions = What users are allowed to do
+1. GRANT
+Meaning
+
+GRANT means:
+
+✅ "Give permission"
+
+Real-Life Example
+
+Teacher says:
+
+"You can read this book."
+
+That is like:
+
+GRANT SELECT
+ON students
+TO user1;
+What User Can Do?
+Permission	Meaning
+SELECT	View data
+INSERT	Add new data
+UPDATE	Change data
+DELETE	Remove data
+Example
+Query
+GRANT SELECT
+ON students
+TO 'student1'@'localhost';
+Simple Meaning
+
+User student1 can now:
+
+✅ View data from students table
+
+❌ Cannot add or delete data
+
+Before GRANT
+User	Access
+student1	No access
+After GRANT
+User	Access
+student1	Can view table
+2. REVOKE
+Meaning
+
+REVOKE means:
+
+❌ "Take back permission"
+
+Real-Life Example
+
+Teacher says:
+
+"Now you cannot read this book."
+
+That is like:
+
+REVOKE SELECT
+ON students
+FROM user1;
+Example
+Query
+
+REVOKE SELECT
+ON students
+FROM 'student1'@'localhost';
+
+Simple Meaning
+
+User student1:
+
+❌ Cannot view data anymore
+
+Before REVOKE
+User	Access
+student1	Can view table
+After REVOKE
+User	Access
+student1	No access
+Easy Memory Trick
+
+========
+
+| Command | Meaning           |
+| ------- | ----------------- |
+| GRANT   | Give permission   |
+| REVOKE  | Remove permission |
+
+
+=================
+
