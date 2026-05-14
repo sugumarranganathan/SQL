@@ -1,0 +1,52 @@
+Granting All Privileges
+Command from Image
+GRANT ALL PRIVILEGES
+ON database_name.*
+TO 'admin_user'@'localhost';
+Simple Meaning
+
+Give all permissions to the user.
+
+User can now:
+
+SELECT → View data
+INSERT → Add data
+UPDATE → Modify data
+DELETE → Remove data
+CREATE → Create tables
+DROP → Delete tables
+Real Example
+GRANT ALL PRIVILEGES
+ON practice_db.*
+TO 'admin1'@'localhost';
+Before GRANT
+User	Permissions
+admin1	No access
+After GRANT
+User	Permissions
+admin1	Full access to practice_db
+Example Table Access
+students table
+student_id	name
+1	Arun
+2	Ravi
+Before GRANT
+
+User admin1:
+
+❌ Cannot see table
+❌ Cannot insert data
+❌ Cannot delete data
+
+After GRANT
+
+User admin1 can:
+
+SELECT * FROM students;
+
+INSERT INTO students VALUES (3, 'Priya');
+
+DELETE FROM students WHERE student_id = 2;
+
+==============
+
