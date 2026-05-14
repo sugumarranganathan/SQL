@@ -1,0 +1,104 @@
+USE practice_db;
+
+-- Create user
+CREATE USER 'student1'@'localhost'
+IDENTIFIED BY 'pass123';
+
+-- Give SELECT permission
+GRANT SELECT
+ON practice_db.students
+TO 'student1'@'localhost';
+
+-- Give INSERT and UPDATE permissions
+GRANT INSERT, UPDATE
+ON practice_db.students
+TO 'student1'@'localhost';
+
+-- Show granted permissions
+SHOW GRANTS FOR 'student1'@'localhost';
+
+-- Remove UPDATE permission
+REVOKE UPDATE
+ON practice_db.students
+FROM 'student1'@'localhost';
+
+-- Reload privileges
+FLUSH PRIVILEGES;
+
+==========
+
+DCL (Data Control Language) in SQL
+
+DCL is used to control access permissions in a database.
+
+Main DCL Commands:
+
+Command	Purpose
+GRANT	Give permission to users
+REVOKE	Remove permission from users
+Create Sample User
+CREATE USER 'student1'@'localhost'
+IDENTIFIED BY 'pass123';
+1. GRANT Command
+
+Used to give permissions.
+
+Give SELECT Permission
+GRANT SELECT
+ON practice_db.students
+TO 'student1'@'localhost';
+Meaning
+User can only view data
+Cannot INSERT, UPDATE, DELETE
+Check Permission
+SHOW GRANTS FOR 'student1'@'localhost';
+2. GRANT Multiple Permissions
+GRANT SELECT, INSERT, UPDATE
+ON practice_db.students
+TO 'student1'@'localhost';
+3. Give Permission on Entire Database
+GRANT ALL PRIVILEGES
+ON practice_db.*
+TO 'student1'@'localhost';
+Meaning
+
+User gets:
+
+SELECT
+INSERT
+UPDATE
+DELETE
+CREATE
+DROP
+ALTER
+
+on all tables inside practice_db.
+
+Reload Privileges
+FLUSH PRIVILEGES;
+
+4. REVOKE Command
+
+Used to remove permissions.
+
+Remove INSERT Permission
+
+REVOKE INSERT
+ON practice_db.students
+FROM 'student1'@'localhost';
+
+Remove All Permissions
+REVOKE ALL PRIVILEGES
+ON practice_db.*
+FROM 'student1'@'localhost';
+
+=========
+
+| DCL Command | Description    |
+| ----------- | -------------- |
+| GRANT       | Gives access   |
+| REVOKE      | Removes access |
+
+
+====
+
