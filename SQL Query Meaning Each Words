@@ -1,0 +1,180 @@
+SQL Query
+SELECT DISTINCT U.name, U.email, O.total_amount
+FROM Users U
+JOIN Orders O
+ON U.user_id = O.user_id
+WHERE O.total_amount > 80;
+Line-by-Line Meaning
+1. SELECT
+SELECT
+
+Meaning:
+
+Fetch/display data
+2. DISTINCT
+DISTINCT
+
+Meaning:
+
+Remove duplicate rows
+3. U.name
+U.name
+Meaning
+Part	Meaning
+U	Alias (short name) for Users table
+.	Access column from table
+name	Column name
+
+Full meaning:
+
+Users table → name column
+
+Equivalent:
+
+Users.name
+4. U.email
+U.email
+Meaning
+Part	Meaning
+U	Users table alias
+.	Access operator
+email	email column
+
+Equivalent:
+
+Users.email
+5. O.total_amount
+O.total_amount
+Meaning
+Part	Meaning
+O	Orders table alias
+.	Access operator
+total_amount	total_amount column
+
+Equivalent:
+
+Orders.total_amount
+6. FROM
+FROM
+
+Meaning:
+
+Take data from table
+7. Users
+Users
+
+Meaning:
+
+Users table name
+8. U
+U
+
+Meaning:
+
+Short name (alias) for Users table
+
+Equivalent:
+
+Users AS U
+9. JOIN
+JOIN
+
+Meaning:
+
+Combine two tables
+10. Orders
+Orders
+
+Meaning:
+
+Orders table name
+11. O
+O
+
+Meaning:
+
+Alias for Orders table
+
+Equivalent:
+
+Orders AS O
+12. ON
+ON
+
+Meaning:
+
+Condition to connect tables
+13. U.user_id
+U.user_id
+
+Meaning:
+
+Users table → user_id column
+14. =
+=
+
+Meaning:
+
+Equal/comparison operator
+15. O.user_id
+O.user_id
+
+Meaning:
+
+Orders table → user_id column
+Full JOIN Meaning
+ON U.user_id = O.user_id
+
+Meaning:
+
+Connect Users and Orders tables where user_id matches
+16. WHERE
+WHERE
+
+Meaning:
+
+Apply condition/filter
+17. O.total_amount
+O.total_amount
+
+Meaning:
+
+Orders table purchase amount
+18. >
+>
+
+Meaning:
+
+Greater than
+19. 80
+80
+
+Meaning:
+
+Only amounts greater than 80
+Full WHERE Meaning
+WHERE O.total_amount > 80
+
+Meaning:
+
+Show only orders whose amount is greater than 80
+Final Simple Meaning
+
+This query:
+
+Takes data from Users table
+Joins Orders table
+Matches using user_id
+Filters orders above 80
+Displays customer name, email and purchase amount
+Removes duplicate rows using DISTINCT
+
+
+Final Result
+| name      | email                                         | total_amount |
+| --------- | --------------------------------------------- | ------------ |
+| Bob Smith | [bob.s@example.com](mailto:bob.s@example.com) | 129.99       |
+
+
+===============
+
