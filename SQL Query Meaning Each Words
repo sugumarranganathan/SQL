@@ -190,32 +190,28 @@ GROUP BY P.name;
 
 
 Line-by-Line Meaning
-
 SELECT
-
 SELECT
 
 Meaning:
 
 Used to fetch/display data from database.
-
 1st Line
 SUM(OD.quantity) AS total_products_sold
 
+
 Meaning of Each Word
 
-Word	Meaning
+| Word                | Meaning                                   |
+| ------------------- | ----------------------------------------- |
+| SUM()               | Adds all values together                  |
+| OD                  | Short name (alias) for OrderDetails table |
+| quantity            | Quantity column from OrderDetails table   |
+| AS                  | Rename column                             |
+| total_products_sold | New column name shown in result           |
 
-SUM()	Adds all values together
-OD	Short name (alias) for OrderDetails table
-
-quantity	Quantity column from OrderDetails table
-AS	Rename column
-
-total_products_sold	New column name shown in result
 Simple Meaning
 Add all ordered quantities and show as total_products_sold.
-
 Example
 
 If quantities are:
@@ -234,26 +230,32 @@ Result:
 total_products_sold
 6
 
+=========
 2nd Line
 SUM(OD.quantity * P.price) AS total_revenue
-
 Meaning of Each Word
-Word	Meaning
 
-SUM()	Add all values
-OD.quantity	Ordered quantity
-*	Multiplication
+| Word          | Meaning            |
+| ------------- | ------------------ |
+| SUM()         | Add all values     |
+| OD.quantity   | Ordered quantity   |
+| *             | Multiplication     |
+| P.price       | Product price      |
+| AS            | Rename column      |
+| total_revenue | Result column name |
 
-P.price	Product price
-AS	Rename column
-total_revenue	Result column name
+
 Simple Meaning
 Multiply quantity × price for every product,
 then add all amounts together.
 Example
-quantity	price	quantity × price
-2	50	100
-1	30	30
+
+
+| quantity | price | quantity × price |
+| -------- | ----- | ---------------- |
+| 2        | 50    | 100              |
+| 1        | 30    | 30               |
+
 
 Total Revenue:
 
@@ -261,41 +263,53 @@ Total Revenue:
 FROM Clause
 FROM Products P
 Meaning
-Word	Meaning
-FROM	Select data from table
-Products	Table name
-P	Short name (alias) for Products table
+
+| Word     | Meaning                               |
+| -------- | ------------------------------------- |
+| FROM     | Select data from table                |
+| Products | Table name                            |
+| P        | Short name (alias) for Products table |
+
+
+==========
+
 Simple Meaning
 Take product data from Products table.
 JOIN Clause
 JOIN OrderDetails OD
 Meaning
-Word	Meaning
-JOIN	Combine two tables
-OrderDetails	Table name
-OD	Short name for OrderDetails
+
+| Word         | Meaning                     |
+| ------------ | --------------------------- |
+| JOIN         | Combine two tables          |
+| OrderDetails | Table name                  |
+| OD           | Short name for OrderDetails |
+
 Simple Meaning
 Connect Products table with OrderDetails table.
 ON Clause
 ON P.product_id = OD.product_id
 
+
 Meaning
 
+| Part          | Meaning                            |
+| ------------- | ---------------------------------- |
+| ON            | Join condition                     |
+| P.product_id  | Product ID from Products table     |
+| =             | Compare                            |
+| OD.product_id | Product ID from OrderDetails table |
 
-Part	Meaning
-ON	Join condition
 
-P.product_id	Product ID from Products table
-=	Compare
-OD.product_id	Product ID from OrderDetails table
 Simple Meaning
 Match same product IDs from both tables.
 
-==============
+==========
 
 
 GROUP BY Clause
 GROUP BY P.name;
+Meaning
 
 | Word     | Meaning                      |
 | -------- | ---------------------------- |
@@ -304,19 +318,33 @@ GROUP BY P.name;
 
 
 Simple Meaning
-
 Calculate totals separately for each product.
-
 Final Overall Meaning
-
 For each product:
 1. Find total quantity sold
 2. Calculate total revenue earned
 3. Show result product-wise
+Example Final Result
 
 
+| Product Name      | total_products_sold | total_revenue |
+| ----------------- | ------------------- | ------------- |
+| Echo Dot          | 3                   | 149.97        |
+| Kindle Paperwhite | 1                   | 142.99        |
+| Wireless Mouse    | 1                   | 24.99         |
 
 
+========
+
+Alias Meaning
+
+| Alias | Original Table |
+| ----- | -------------- |
+| P     | Products       |
+| OD    | OrderDetails   |
+
+Aliases are short names used to write queries easily.
+=====
 
 
 
