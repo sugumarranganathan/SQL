@@ -53,4 +53,126 @@ Result:
 ============
 
 
+3. Find the average product price for each category
+
+SQL Query
+
+SELECT category, AVG(price) AS average_price
+FROM Products
+GROUP BY category;
+
+
+Result
+
+| category    | average_price |
+| ----------- | ------------- |
+| Electronics | 38.32         |
+| Books       | 129.99        |
+| Fitness     | 19.99         |
+
+
+===============
+
+4. List all customers who purchased products from Electronics category
+
+
+QL Query
+
+SELECT DISTINCT 
+    U.name, 
+    U.email
+FROM 
+    Users U
+JOIN 
+    Orders O ON U.user_id = O.user_id
+JOIN 
+    OrderDetails OD ON O.order_id = OD.order_id
+JOIN 
+    Products P ON OD.product_id = P.product_id
+WHERE 
+    P.category = 'Electronics';
+
+or
+
+SELECT DISTINCT U.name, P.category
+FROM Users U
+JOIN Orders O
+ON U.user_id = O.user_id
+JOIN OrderDetails OD
+ON O.order_id = OD.order_id
+JOIN Products P
+ON OD.product_id = P.product_id
+WHERE P.category = 'Electronics';
+
+Result
+
+| name          | category    |
+| ------------- | ----------- |
+| Alice Johnson | Electronics |
+| Charlie Brown | Electronics |
+
+
+==========
+5. Find total products sold and total revenue for each product
+
+
+SQL Query
+
+SELECT P.name,
+SUM(OD.quantity) AS total_products_sold,
+SUM(OD.quantity * P.price) AS total_revenue
+FROM Products P
+JOIN OrderDetails OD
+ON P.product_id = OD.product_id
+GROUP BY P.name;
+
+Result
+
+| name              | total_products_sold | total_revenue |
+| ----------------- | ------------------- | ------------- |
+| Echo Dot          | 3                   | 149.97        |
+| Kindle Paperwhite | 1                   | 129.99        |
+| Wireless Mouse    | 1                   | 24.99         |
+
+
+===========
+
+6. Update the price of all products in the Books category, increasing it by 10%.
+
+
+SQL Query
+
+
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE 
+    Products
+SET 
+    price = price * 1.10
+WHERE 
+    category = 'Books';
+
+Result
+
+Query OK, 1 row affected
+Rows matched: 1  Changed: 1
+
+
+Before Update
+
+| product_id | name              | price  | category |
+| ---------- | ----------------- | ------ | -------- |
+| 2          | Kindle Paperwhite | 129.99 | Books    |
+
+
+After Update
+
+| product_id | name              | price  | category |
+| ---------- | ----------------- | ------ | -------- |
+| 2          | Kindle Paperwhite | 142.99 | Books    |
+
+
+==============
+
+
 
