@@ -1,3 +1,102 @@
+Users Table
+
+| user_id | name          | email                                                 | registered_date | membership |
+| ------- | ------------- | ----------------------------------------------------- | --------------- | ---------- |
+| 1       | Alice Johnson | [alice.j@example.com](mailto:alice.j@example.com)     | 2024-01-15      | Prime      |
+| 2       | Bob Smith     | [bob.s@example.com](mailto:bob.s@example.com)         | 2024-02-01      | Basic      |
+| 3       | Charlie Brown | [charlie.b@example.com](mailto:charlie.b@example.com) | 2024-03-10      | Prime      |
+| 4       | Daisy Ridley  | [daisy.r@example.com](mailto:daisy.r@example.com)     | 2024-04-12      | Basic      |
+
+===========
+
+Products Table
+
+| product_id | name              | price  | category    | stock |
+| ---------- | ----------------- | ------ | ----------- | ----- |
+| 1          | Echo Dot          | 49.99  | Electronics | 120   |
+| 2          | Kindle Paperwhite | 142.99 | Books       | 50    |
+| 3          | Fire Stick        | 39.99  | Electronics | 80    |
+| 4          | Yoga Mat          | 19.99  | Fitness     | 200   |
+| 5          | Wireless Mouse    | 24.99  | Electronics | 150   |
+
+
+=========
+
+Orders Table
+
+| order_id | user_id | order_date | total_amount |
+| -------- | ------- | ---------- | ------------ |
+| 1        | 1       | 2024-05-01 | 79.98        |
+| 2        | 2       | 2024-05-03 | 129.99       |
+| 3        | 1       | 2024-05-04 | 49.99        |
+| 4        | 3       | 2024-05-05 | 24.99        |
+
+
+===========
+
+OrderDetails Table
+
+| order_details_id | order_id | product_id | quantity |
+| ---------------- | -------- | ---------- | -------- |
+| 9                | 1        | 1          | 2        |
+| 10               | 2        | 2          | 1        |
+| 11               | 3        | 1          | 1        |
+| 12               | 4        | 5          | 1        |
+
+===========
+
+AmazonDB
+│
+├── Users
+├── Products
+├── Orders
+└── OrderDetails
+
+=====
+
+| Table        | Reason                       |
+| ------------ | ---------------------------- |
+| Users        | Store customers              |
+| Orders       | Store order summary          |
+| OrderDetails | Store products inside orders |
+| Products     | Store product catalog        |
+
+
+================
+
+Database Relationship Diagram
+Users
+  |
+  | user_id
+  ↓
+Orders
+  |
+  | order_id
+  ↓
+OrderDetails
+  |
+  | product_id
+  ↓
+Products
+
+============
+
+Real-Time Workflow
+Customer registers
+        ↓
+Customer places order
+        ↓
+Order gets order_id
+        ↓
+Products added into order
+        ↓
+Quantity stored in OrderDetails
+        ↓
+Product information fetched from Products table
+
+===========
+
+
 1. List all customers who have made purchases of more than $80
 
 
