@@ -1,1 +1,22 @@
-s
+1. List all customers who have made purchases of more than $80
+
+
+SQL Query
+
+SELECT DISTINCT U.name, U.email, O.total_amount
+FROM Users U
+JOIN Orders O
+ON U.user_id = O.user_id
+WHERE O.total_amount > 80;
+
+
+Result
+
+| name      | email                                         | total_amount |
+| --------- | --------------------------------------------- | ------------ |
+| Bob Smith | [bob.s@example.com](mailto:bob.s@example.com) | 129.99       |
+
+
+==========
+
+
