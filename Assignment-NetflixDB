@@ -46,8 +46,56 @@ WatchHistory Table
 
 ===========
 
+NetflixDB Workflow
+Users  →  WatchHistory  →  Movies
+   │
+   └────────────→ Reviews ←────────────┘
+
+===========
 
 
+Tables in NetflixDB
+
+NetflixDB
+│
+├── Users
+├── Movies
+├── WatchHistory
+└── Reviews
+
+======
+
+Relationship Diagram
+
+Users
+  │
+  │ user_id
+  ▼
+WatchHistory
+  ▲
+  │ movie_id
+  │
+Movies
+  │
+  │ movie_id
+  ▼
+Reviews
+  ▲
+  │ user_id
+  │
+Users
+
+=====
+
+
+Table	Purpose
+
+Users	Stores user account details
+Movies	Stores movie information
+WatchHistory	Stores watched movie history
+Reviews	Stores movie reviews and ratings
+
+=============
 
 
 1. List all users subscribed to the Premium plan
