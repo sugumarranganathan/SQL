@@ -42,5 +42,148 @@ Schema
 
 =============
 
+3. Orders Table
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    order_date DATE NOT NULL,
+    total_amount DECIMAL(10,2) NOT NULL,
+
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
+
+
+Schema
+
+| Column       | Data Type     | Constraint                  |
+| ------------ | ------------- | --------------------------- |
+| order_id     | INT           | PRIMARY KEY, AUTO_INCREMENT |
+| user_id      | INT           | FOREIGN KEY                 |
+| order_date   | DATE          | NOT NULL                    |
+| total_amount | DECIMAL(10,2) | NOT NULL                    |
 
 ==========
+
+4. OrderDetails Table
+CREATE TABLE OrderDetails (
+    order_details_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT,
+    product_id INT,
+
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);
+
+
+Schema
+
+
+| Column           | Data Type | Constraint                  |
+| ---------------- | --------- | --------------------------- |
+| order_details_id | INT       | PRIMARY KEY, AUTO_INCREMENT |
+| order_id         | INT       | FOREIGN KEY                 |
+| product_id       | INT       | FOREIGN KEY                 |
+
+
+=============
+
+Relationship Schema Diagram
+Users
+  |
+  | user_id
+  ↓
+Orders
+  |
+  | order_id
+  ↓
+OrderDetails
+  ↑
+  | product_id
+Products
+
+
+Relationship Meaning
+
+| Table                   | Connected To | Relation                              |
+| ----------------------- | ------------ | ------------------------------------- |
+| Users → Orders          | user_id      | One user can have many orders         |
+| Orders → OrderDetails   | order_id     | One order can contain many products   |
+| Products → OrderDetails | product_id   | One product can appear in many orders |
+
+
+===========
+
+membership (enum, Basic, nullable)
+
+means:
+
+Part	Meaning
+enum	Column type is ENUM
+Basic	Default/current enum value shown
+nullable	Column can store NULL value
+1. ENUM meaning
+
+ENUM means:
+
+Only fixed values are allowed.
+
+Example:
+
+membership ENUM('Basic', 'Prime')
+
+Allowed values:
+
+Basic
+Prime
+
+Wrong values like:
+
+Gold
+Silver
+VIP
+
+will give error.
+
+2. Basic meaning
+
+You used:
+
+DEFAULT 'Basic'
+
+So if user does not enter membership value:
+
+MySQL automatically stores:
+
+Basic
+
+Example:
+
+INSERT INTO Users(name, email, registered_date)
+VALUES ('Rahul', 'rahul@gmail.com', '2026-05-15');
+
+Result:
+
+membership = Basic
+3. nullable meaning
+
+Nullable means:
+
+Column can contain:
+
+NULL
+
+(NULL = empty/no value)
+
+Example:
+
+membership = NULL
+
+allowed if NOT NULL is not specified.
+
+Difference
+Constraint	Meaning
+NULL	Empty value allowed
+NOT NULL	Empty value not allowed
+
+==========
+
