@@ -1,1 +1,141 @@
-s
+1. List all users subscribed to the Premium plan
+
+SQL Query
+
+SELECT name, email 
+FROM Users 
+WHERE plan = 'Premium';
+
+
+Result
+
+| name      | email                                                 |
+| --------- | ----------------------------------------------------- |
+| John Doe  | [john.doe@example.com](mailto:john.doe@example.com)   |
+| Bob Brown | [bob.brown@example.com](mailto:bob.brown@example.com) |
+
+
+==============
+
+2. Retrieve all movies in the Drama genre with rating higher than 8.5
+
+SQL Query
+SELECT title, genre, rating 
+FROM Movies 
+WHERE genre = 'Drama' AND rating > 8.5;
+
+Result:
+
+
+| title           | genre | rating |
+| --------------- | ----- | ------ |
+| Stranger Things | Drama | 8.7    |
+
+
+==============
+
+3. Find average rating of all movies released after 2015
+
+QL Query
+
+SELECT AVG(rating) AS average_rating 
+FROM Movies 
+WHERE release_year > 2015;
+
+Result
+
+average_rating
+8.5
+
+=============
+
+4. List users who watched Stranger Things with completion percentage
+
+SQL Query
+
+SELECT U.name, W.completion_percentage 
+FROM Users U 
+JOIN WatchHistory W ON U.user_id = W.user_id
+JOIN Movies M ON W.movie_id = M.movie_id 
+WHERE M.title = 'Stranger Things';
+
+Result
+
+| name     | completion_percentage |
+| -------- | --------------------- |
+| John Doe | 100                   |
+
+
+============
+
+5. Find users who gave highest review rating
+
+SQL Query
+
+SELECT U.name 
+FROM Users U 
+JOIN Reviews R ON U.user_id = R.user_id 
+WHERE R.rating = (SELECT MAX(rating) FROM Reviews);
+
+Result
+
+name
+Jane Smith
+
+=========
+
+6. Calculate number of movies watched by each user
+
+SQL Query
+
+SELECT U.name, COUNT(W.watch_id) AS movies_watched 
+FROM Users U 
+JOIN WatchHistory W ON U.user_id = W.user_id 
+GROUP BY U.user_id 
+ORDER BY movies_watched DESC;
+
+Result
+
+| name          | movies_watched |
+| ------------- | -------------- |
+| John Doe      | 2              |
+| Jane Smith    | 1              |
+| Alice Johnson | 1              |
+| Bob Brown     | 1              |
+
+
+===========
+
+7. List all movies watched by John Doe with genre, rating and completion percentage
+
+SQL Query
+
+SELECT M.title, M.genre, M.rating, W.completion_percentage 
+FROM Movies M
+JOIN WatchHistory W ON M.movie_id = W.movie_id
+JOIN Users U ON W.user_id = U.user_id
+WHERE U.name = 'John Doe';
+
+Result
+
+| title           | genre  | rating | completion_percentage |
+| --------------- | ------ | ------ | --------------------- |
+| Stranger Things | Drama  | 8.7    | 100                   |
+| Black Mirror    | Sci-Fi | 8.8    | 90                    |
+
+
+===============
+
+8. Update movie rating for Stranger Things
+
+SQL Query
+
+UPDATE Movies 
+SET rating = 8.9 
+WHERE title = 'Stranger Things';
+
+Result
+
+Query OK, 1 row affected
+
+===============
