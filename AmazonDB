@@ -187,3 +187,89 @@ NOT NULL	Empty value not allowed
 
 ==========
 
+Users Table
+Query
+SELECT * FROM Users;
+Result
+user_id	name	email	registered_date	membership
+Products Table
+Query
+SELECT * FROM Products;
+Result
+product_id	name	price	category
+Orders Table
+Query
+SELECT * FROM Orders;
+Result
+order_id	user_id	order_date	total_amount
+OrderDetails Table
+Query
+SELECT * FROM OrderDetails;
+Result
+order_details_id	order_id	product_id
+
+============
+
+1. Users Table
+Query
+DESCRIBE Users;
+Result
+
+| Field           | Type                  | Null | Key | Default | Extra          |
+| --------------- | --------------------- | ---- | --- | ------- | -------------- |
+| user_id         | int                   | NO   | PRI | NULL    | auto_increment |
+| name            | varchar(100)          | NO   |     | NULL    |                |
+| email           | varchar(150)          | NO   | UNI | NULL    |                |
+| registered_date | date                  | NO   |     | NULL    |                |
+| membership      | enum('Basic','Prime') | YES  |     | Basic   |                |
+
+
+========
+
+2. Products Table
+Query
+DESCRIBE Products;
+
+| Field      | Type          | Null | Key | Default | Extra          |
+| ---------- | ------------- | ---- | --- | ------- | -------------- |
+| product_id | int           | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(100)  | NO   |     | NULL    |                |
+| price      | decimal(10,2) | NO   |     | NULL    |                |
+| category   | varchar(100)  | NO   |     | NULL    |                |
+
+
+==============
+
+3. Orders Table
+Query
+DESCRIBE Orders;
+
+| Field        | Type          | Null | Key | Default | Extra          |
+| ------------ | ------------- | ---- | --- | ------- | -------------- |
+| order_id     | int           | NO   | PRI | NULL    | auto_increment |
+| user_id      | int           | YES  | MUL | NULL    |                |
+| order_date   | date          | NO   |     | NULL    |                |
+| total_amount | decimal(10,2) | NO   |     | NULL    |                |
+
+
+============
+
+4. OrderDetails Table
+Query
+DESCRIBE OrderDetails;
+Result
+
+| Field            | Type | Null | Key | Default | Extra          |
+| ---------------- | ---- | ---- | --- | ------- | -------------- |
+| order_details_id | int  | NO   | PRI | NULL    | auto_increment |
+| order_id         | int  | YES  | MUL | NULL    |                |
+| product_id       | int  | YES  | MUL | NULL    |                |
+| quantity         | int  | NO   |     | NULL    |                |
+
+==========
+
+
+
+
+
+
