@@ -46,14 +46,6 @@ WatchHistory Table
 
 ===========
 
-NetflixDB Workflow
-Users  →  WatchHistory  →  Movies
-   │
-   └────────────→ Reviews ←────────────┘
-
-===========
-
-
 Tables in NetflixDB
 
 NetflixDB
