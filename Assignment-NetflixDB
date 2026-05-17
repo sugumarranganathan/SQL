@@ -139,3 +139,125 @@ Result
 Query OK, 1 row affected
 
 ===============
+
+9. Remove all reviews for movies with rating below 4.0
+
+SQL Query
+
+DELETE FROM Reviews 
+WHERE movie_id IN (SELECT movie_id FROM Movies WHERE rating < 4.0);
+
+Result
+Query OK, 0 rows affected
+
+Reason:
+
+No movie has rating below 4.0.
+
+==========
+
+10. Fetch users who reviewed a movie but did not complete watching it
+
+SQL Query
+
+SELECT U.name, M.title, R.review_text 
+FROM Users U
+JOIN Reviews R ON U.user_id = R.user_id
+JOIN Movies M ON R.movie_id = M.movie_id
+LEFT JOIN WatchHistory W ON U.user_id = W.user_id AND M.movie_id = W.movie_id
+WHERE (W.completion_percentage IS NULL OR W.completion_percentage < 100);
+
+Result
+
+| name          | title        | review_text                   |
+| ------------- | ------------ | ----------------------------- |
+| Jane Smith    | Breaking Bad | Intense and thrilling!        |
+| Alice Johnson | The Crown    | Good show, but slow at times. |
+
+========
+
+11. List all movies watched by John Doe with genre and completion percentage
+
+SQL Query
+
+SELECT M.title, M.genre, W.completion_percentage 
+FROM Movies M
+JOIN WatchHistory W ON M.movie_id = W.movie_id
+JOIN Users U ON W.user_id = U.user_id
+WHERE U.name = 'John Doe';
+
+Result
+
+| title           | genre  | completion_percentage |
+| --------------- | ------ | --------------------- |
+| Stranger Things | Drama  | 100                   |
+| Black Mirror    | Sci-Fi | 90                    |
+
+
+==========
+
+12. Retrieve users who reviewed Stranger Things with review text and rating
+
+SQL Query
+
+SELECT U.name, R.review_text, R.rating 
+FROM Users U
+JOIN Reviews R ON U.user_id = R.user_id
+JOIN Movies M ON R.movie_id = M.movie_id
+WHERE M.title = 'Stranger Things';
+
+Result
+
+| name     | review_text                             | rating |
+| -------- | --------------------------------------- | ------ |
+| John Doe | Amazing storyline and great characters! | 4.5    |
+
+=============
+
+13. Fetch watch history of all users
+
+SQL Query
+
+SELECT U.name, U.email, M.title, M.genre, W.watched_date, W.completion_percentage 
+FROM Users U
+JOIN WatchHistory W ON U.user_id = W.user_id
+JOIN Movies M ON W.movie_id = M.movie_id;
+
+Result
+
+| name          | email                                                         | title           | genre   | watched_date | completion_percentage |
+| ------------- | ------------------------------------------------------------- | --------------- | ------- | ------------ | --------------------- |
+| John Doe      | [john.doe@example.com](mailto:john.doe@example.com)           | Stranger Things | Drama   | 2024-02-05   | 100                   |
+| Jane Smith    | [jane.smith@example.com](mailto:jane.smith@example.com)       | Breaking Bad    | Crime   | 2024-02-06   | 80                    |
+| Alice Johnson | [alice.johnson@example.com](mailto:alice.johnson@example.com) | The Crown       | History | 2024-02-10   | 50                    |
+| Bob Brown     | [bob.brown@example.com](mailto:bob.brown@example.com)         | The Witcher     | Fantasy | 2024-02-15   | 100                   |
+| John Doe      | [john.doe@example.com](mailto:john.doe@example.com)           | Black Mirror    | Sci-Fi  | 2024-02-18   | 90                    |
+
+
+===============
+
+14. List movies with total reviews and average rating having at least two reviews
+
+SQL Query
+
+SELECT M.title, COUNT(R.review_id) AS total_reviews, AVG(R.rating) AS average_rating 
+FROM Movies M
+JOIN Reviews R ON M.movie_id = R.movie_id
+GROUP BY M.movie_id
+HAVING COUNT(R.review_id) >= 2;
+
+Result
+
+Empty set
+
+Reason:
+
+No movie has 2 or more reviews in your current data.
+
+=========
+
+
+
+
+
+
