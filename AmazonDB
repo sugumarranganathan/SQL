@@ -1,0 +1,46 @@
+AmazonDB Schema
+1. Users Table
+CREATE TABLE Users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    registered_date DATE NOT NULL,
+    membership ENUM('Basic', 'Prime') DEFAULT 'Basic'
+);
+
+
+Schema
+
+| Column          | Data Type             | Constraint                  |
+| --------------- | --------------------- | --------------------------- |
+| user_id         | INT                   | PRIMARY KEY, AUTO_INCREMENT |
+| name            | VARCHAR(100)          | NOT NULL                    |
+| email           | VARCHAR(150)          | UNIQUE, NOT NULL            |
+| registered_date | DATE                  | NOT NULL                    |
+| membership      | ENUM('Basic','Prime') | DEFAULT 'Basic'             |
+
+=============
+
+2. Products Table
+CREATE TABLE Products (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    category VARCHAR(100) NOT NULL
+);
+
+
+Schema
+
+| Column     | Data Type     | Constraint                  |
+| ---------- | ------------- | --------------------------- |
+| product_id | INT           | PRIMARY KEY, AUTO_INCREMENT |
+| name       | VARCHAR(100)  | NOT NULL                    |
+| price      | DECIMAL(10,2) | NOT NULL                    |
+| category   | VARCHAR(100)  | NOT NULL                    |
+
+
+=============
+
+
+==========
