@@ -20,3 +20,37 @@ Result
 ==========
 
 
+2. Retrieve all orders placed in the last 280 days along with customer name and email
+
+
+SQL Query
+
+
+SELECT O.order_id, U.name, U.email, O.order_date
+FROM Orders O
+JOIN Users U
+ON O.user_id = U.user_id
+WHERE O.order_date >= CURDATE() - INTERVAL 280 DAY;
+
+or
+
+SELECT O.order_id, U.name, U.email, O.order_date
+FROM Orders O
+JOIN Users U
+ON O.user_id = U.user_id
+WHERE O.order_date >= '2024-01-01';
+
+Result:
+
+| order_id | name          | email                                                 | order_date |
+| -------- | ------------- | ----------------------------------------------------- | ---------- |
+| 1        | Alice Johnson | [alice.j@example.com](mailto:alice.j@example.com)     | 2024-05-01 |
+| 2        | Bob Smith     | [bob.s@example.com](mailto:bob.s@example.com)         | 2024-05-03 |
+| 3        | Alice Johnson | [alice.j@example.com](mailto:alice.j@example.com)     | 2024-05-04 |
+| 4        | Charlie Brown | [charlie.b@example.com](mailto:charlie.b@example.com) | 2024-05-05 |
+
+
+============
+
+
+
