@@ -174,5 +174,93 @@ After Update
 
 ==============
 
+7. Remove all orders that were placed before 2020.
+
+SQL
+
+DELETE FROM 
+    Orders
+WHERE 
+    order_date < '2020-01-01';
+
+
+Result
+
+Query OK, 0 rows affected
+
+Meaning:
+
+No orders deleted
+
+===================
+
+
+8. Fetch the order details, including customer name, product name, and quantity, for orders placed on 2024-11-01
+
+SQL
+
+SELECT U.name,
+P.name AS product_name,
+OD.quantity
+FROM Users U
+JOIN Orders O
+ON U.user_id = O.user_id
+JOIN OrderDetails OD
+ON O.order_id = OD.order_id
+JOIN Products P
+ON OD.product_id = P.product_id
+WHERE O.order_date = '2024-05-01';
+
+Result:
+
+| name          | product_name | quantity |
+| ------------- | ------------ | -------- |
+| Alice Johnson | Echo Dot     | 2        |
+
+
+=============
+
+9. Fetch all customers and the total number of orders they have placed.
+
+SQL:
+
+SELECT 
+    U.name AS customer_name, 
+    U.email, 
+    COUNT(O.order_id) AS total_orders
+FROM 
+    Users U
+LEFT JOIN 
+    Orders O ON U.user_id = O.user_id
+GROUP BY 
+    U.user_id;
+
+Result:
+
+| name          | email                                                 | total_orders |
+| ------------- | ----------------------------------------------------- | ------------ |
+| Alice Johnson | [alice.j@example.com](mailto:alice.j@example.com)     | 2            |
+| Bob Smith     | [bob.s@example.com](mailto:bob.s@example.com)         | 1            |
+| Charlie Brown | [charlie.b@example.com](mailto:charlie.b@example.com) | 1            |
+| Daisy Ridley  | [daisy.r@example.com](mailto:daisy.r@example.com)     | 0            |
+
+==============
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
