@@ -1,0 +1,167 @@
+Scenario = A real-world situation or problem example / A business problem for which we write queries or programs.
+
+
+1: Employee Salary Analysis
+
+Question
+
+Find the names and salaries of employees who earn more than the average salary in the company.
+
+Query
+SELECT name, salary
+FROM employees
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+);
+
+
+Result:
+
+| name    | salary |
+| ------- | ------ |
+| John    | 60000  |
+| Michael | 75000  |
+| Sara    | 56000  |
+
+==================
+
+
+Scenario 2: Customer Orders without Matching Records
+
+Question
+
+Retrieve a list of customer names who have not placed any orders.
+
+Query
+
+SELECT c.customer_name
+FROM customers c
+LEFT JOIN orders o
+ON c.customer_name = o.customer_name
+WHERE o.order_id IS NULL;
+
+Result:
+
+| customer_name |
+| ------------- |
+| John Doe      |
+| Jane Smith    |
+| Alice Johnson |
+| NULL          |
+| Robert Brown  |
+
+
+===========
+
+
+3: Product Sales Summary
+Question
+
+Display the total sales amount for each product.
+
+Query
+SELECT product_name, price AS total_sales_amount
+FROM products;
+
+
+Result:
+
+| product_name | total_sales_amount |
+| ------------ | ------------------ |
+| Laptop       | 1000               |
+| Mobile       | 500                |
+| Tablet       | 300                |
+| Headphones   | 100                |
+| Smartwatch   | 200                |
+
+
+===========
+
+4: Department-Wise Employee Count
+Question
+
+List each department name with the number of employees working in it.
+
+Query
+
+SELECT d.department_name,
+COUNT(e.employee_id) AS employee_count
+FROM departments d
+LEFT JOIN employees e
+ON d.department_id = e.department_id
+GROUP BY d.department_name;
+
+Result:
+
+| department_name | employee_count |
+| --------------- | -------------- |
+| HR              | 2              |
+| Finance         | 2              |
+| IT              | 1              |
+| Marketing       | 0              |
+
+
+===========
+
+5: Top 3 Highest Sales
+Question
+
+Find the top 3 highest sales transactions.
+
+Query
+SELECT *
+FROM sales
+ORDER BY amount DESC
+LIMIT 3;
+
+Result:
+
+| sale_id | customer_id | amount  | sale_date  |
+| ------- | ----------- | ------- | ---------- |
+| 3       | 103         | 7000.00 | 2023-03-17 |
+| 5       | 105         | 6000.00 | 2023-03-19 |
+| 2       | 102         | 5500.00 | 2023-03-16 |
+
+============
+
+6: Calculate Employee Salary Ranks by Department
+Question
+
+Write a query to display each employee’s name, department name, salary, and their salary rank within their respective department.
+
+Query
+SELECT 
+    e.name,
+    d.department_name,
+    e.salary,
+    RANK() OVER (
+        PARTITION BY d.department_name
+        ORDER BY e.salary DESC
+    ) AS salary_rank
+FROM employees e
+INNER JOIN departments d
+ON e.department_id = d.department_id;
+
+Result:
+
+| name    | department_name | salary | salary_rank |
+| ------- | --------------- | ------ | ----------- |
+| John    | HR              | 60000  | 1           |
+| Sara    | HR              | 56000  | 2           |
+| Emily   | Finance         | 48000  | 1           |
+| David   | Finance         | 49000  | 1           |
+| Michael | IT              | 75000  | 1           |
+
+
+===========
+
+
+
+
+
+
+
+
+
+
