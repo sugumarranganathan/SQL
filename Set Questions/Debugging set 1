@@ -155,6 +155,16 @@ ON sales(amount);
 SELECT * 
 FROM sales 
 WHERE amount > 5000;
+
+Result:
+
+| sale_id | customer_id | amount  | sale_date  |
+| ------- | ----------- | ------- | ---------- |
+| 2       | 102         | 5500.00 | 2023-03-16 |
+| 3       | 103         | 7000.00 | 2023-03-17 |
+| 5       | 105         | 6000.00 | 2023-03-19 |
+
+
 ===========
 
 4. Data Type Mismatch
@@ -166,6 +176,13 @@ price is INT but value is written as string.
 
 Correct Query
 SELECT * FROM products WHERE price = 100;
+
+Result:
+
+| product_id | product_name | price |
+| ---------- | ------------ | ----- |
+| 4          | Headphones   | 100   |
+
 
 ===========
 
@@ -186,6 +203,17 @@ FROM employees e
 INNER JOIN departments d 
 ON e.department_id = d.department_id;
 
+Result:
+
+| name    | department_name |
+| ------- | --------------- |
+| John    | HR              |
+| Emily   | Finance         |
+| Michael | IT              |
+| Sara    | HR              |
+| David   | Finance         |
+
+
 ===========
 
 6. Incorrect NULL Handling
@@ -199,6 +227,16 @@ NULL cannot be checked using !=.
 Correct Query
 SELECT * FROM customers 
 WHERE customer_name IS NOT NULL;
+
+Result:
+
+| customer_id | customer_name |
+| ----------- | ------------- |
+| 101         | John Doe      |
+| 102         | Jane Smith    |
+| 103         | Alice Johnson |
+| 105         | Robert Brown  |
+
 
 =============
 
@@ -215,6 +253,19 @@ SELECT customer_id, SUM(amount)
 FROM sales
 GROUP BY customer_id;
 
+
+Result:
+
+
+| customer_id | SUM(amount) |
+| ----------- | ----------- |
+| 101         | 4500.00     |
+| 102         | 5500.00     |
+| 103         | 7000.00     |
+| 104         | 3000.00     |
+| 105         | 6000.00     |
+
+
 =========
 
 8. Incorrect Column Selection
@@ -228,6 +279,17 @@ customer_address column does not exist in orders table.
 Correct Query
 SELECT order_id, customer_name
 FROM orders;
+
+Result:
+
+| order_id | customer_name |
+| -------- | ------------- |
+| 1        | John          |
+| 2        | Emily         |
+| 3        | Michael       |
+| 4        | Sara          |
+| 5        | David         |
+
 
 ========
 
