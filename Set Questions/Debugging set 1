@@ -1,5 +1,18 @@
+employeesDB
+===========
+departments
+      ↓
+employees
 
+customers
+      ↓
+sales
 
+orders (separate order details)
+
+products (product information)
+
+============
 
 
 1. Syntax Error Identification
