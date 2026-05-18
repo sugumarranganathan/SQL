@@ -1,16 +1,91 @@
 employeesDB
 ===========
-departments
-      ↓
-employees
 
-customers
-      ↓
-sales
+1. employees Table
 
-orders (separate order details)
+| employee_id | name    | age | salary | department_id |
+| ----------- | ------- | --- | ------ | ------------- |
+| 1           | John    | 30  | 60000  | 101           |
+| 2           | Emily   | 25  | 48000  | 102           |
+| 3           | Michael | 40  | 75000  | 103           |
+| 4           | Sara    | 35  | 56000  | 101           |
+| 5           | David   | 28  | 49000  | 102           |
 
-products (product information)
+==========
+
+2. departments Table
+
+| department_id | department_name |
+| ------------- | --------------- |
+| 101           | HR              |
+| 102           | Finance         |
+| 103           | IT              |
+| 104           | Marketing       |
+
+
+=========
+
+3. customers Table
+
+| customer_id | customer_name |
+| ----------- | ------------- |
+| 101         | John Doe      |
+| 102         | Jane Smith    |
+| 103         | Alice Johnson |
+| 104         | NULL          |
+| 105         | Robert Brown  |
+
+
+=========
+
+4. sales Table
+
+| sale_id | customer_id | amount  | sale_date  |
+| ------- | ----------- | ------- | ---------- |
+| 1       | 101         | 4500.00 | 2023-03-15 |
+| 2       | 102         | 5500.00 | 2023-03-16 |
+| 3       | 103         | 7000.00 | 2023-03-17 |
+| 4       | 104         | 3000.00 | 2023-03-18 |
+| 5       | 105         | 6000.00 | 2023-03-19 |
+
+
+=======
+
+5. products Table
+
+| product_id | product_name | price |
+| ---------- | ------------ | ----- |
+| 1          | Laptop       | 1000  |
+| 2          | Mobile       | 500   |
+| 3          | Tablet       | 300   |
+| 4          | Headphones   | 100   |
+| 5          | Smartwatch   | 200   |
+
+
+=========
+
+6. orders Table
+
+| order_id | customer_name | order_date | order_amount |
+| -------- | ------------- | ---------- | ------------ |
+| 1        | John          | 2023-05-01 | 500          |
+| 2        | Emily         | 2023-05-02 | 700          |
+| 3        | Michael       | 2023-05-03 | 1200         |
+| 4        | Sara          | 2023-05-04 | 450          |
+| 5        | David         | 2023-05-05 | 900          |
+
+
+=========
+
+| Table       | Real-World Use          |
+| ----------- | ----------------------- |
+| employees   | Company staff records   |
+| departments | Department management   |
+| customers   | Customer information    |
+| sales       | Sales tracking          |
+| products    | Product catalog         |
+| orders      | Customer order tracking |
+
 
 ============
 
@@ -27,6 +102,15 @@ SELECT name, age
 FROM employees 
 WHERE salary >= 50000;
 
+Result:
+
+| name    | age |
+| ------- | --- |
+| John    | 30  |
+| Michael | 40  |
+| Sara    | 35  |
+
+
 =============
 
 2. Logical Error Detection
@@ -42,6 +126,14 @@ Correct Query
 SELECT * FROM orders 
 WHERE order_date = '2023-05-01' 
 OR order_date = '2023-05-02';
+
+Result:
+
+| order_id | customer_name | order_date | order_amount |
+| -------- | ------------- | ---------- | ------------ |
+| 1        | John          | 2023-05-01 | 500          |
+| 2        | Emily         | 2023-05-02 | 700          |
+
 
 ==========
 
