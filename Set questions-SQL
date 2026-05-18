@@ -1,0 +1,104 @@
+What is the primary function of the ROLLBACK command?
+A) Save the changes made by a transaction
+B) Undo the changes made by a transaction 
+C) Delete the table structure
+
+(Answer: B)
+
+What will happen if you try to insert a duplicate value into a column with a UNIQUE constraint?
+A) Data will be inserted
+B) SQL will ignore the duplicate value
+C) SQL will throw an error
+
+(Answer: C)
+
+Which keyword is used to specify the join condition in SQL?
+A) WHERE
+B) ON
+C) USING
+
+(Answer: B)
+
+What is the primary purpose of a primary key in SQL?
+A) Ensure data redundancy
+B) Uniquely identify each record
+C) Establish a connection between tables
+
+(Answer: B)
+
+Which of the following statements is true about a Unique Key?
+A) It allows duplicate values in a column
+B) It uniquely identifies each record in a table
+C) It is used for table relationships
+
+(Answer: B)
+
+In which join are all records from the left table and matching records from the right table returned?
+A) RIGHT JOIN
+B) FULL JOIN
+C) LEFT JOIN
+
+(Answer: c)
+
+Which language category does the SELECT statement belong to?
+A) DML
+B) DQL
+C) DCL
+
+(Answer: B)
+
+Which of the following is a Transaction Control Language (TCL) command?
+A) COMMIT
+B) SELECT
+C) DROP
+
+(Answer: A)
+
+What happens when there is no match in a FULL JOIN?
+A) It returns NULL for unmatched columns
+B) It throws an error
+C) It returns only the matched rows
+
+(Answer: A)
+
+Which type of join returns all records from the right table and matching records from the left table?
+A) INNER JOIN
+B) RIGHT JOIN
+C) FULL JOIN
+
+(Answer: B)
+
+Can a table have multiple primary keys?
+A) Yes
+B) No
+C) Only in special cases
+
+(Answer: B)
+
+Which SQL command is used to update records in a table?
+A) UPDATE
+B) MODIFY
+C) ALTER
+
+(Answer: A)
+
+Which SQL join returns all records from both tables, with NULLs for unmatched records?
+A) INNER JOIN
+B) FULL JOIN
+C) LEFT JOIN
+
+(Answer: B)
+
+Which SQL statement is used to delete a table completely?
+A) DROP
+B) DELETE
+C) TRUNCATE
+
+(Answer: A)
+
+Which key is used to establish a relationship between two tables?
+A) Primary Key
+B) Foreign Key
+C) Unique Key
+
+(Answer: B)
