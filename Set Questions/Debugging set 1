@@ -1,0 +1,133 @@
+
+
+
+
+1. Syntax Error Identification
+Query
+SELECT name age FROM employees WHERE salary >= 50000;
+
+Problem
+Missing comma between name and age.
+
+Correct Query
+SELECT name, age 
+FROM employees 
+WHERE salary >= 50000;
+
+=============
+
+2. Logical Error Detection
+Query
+SELECT * FROM orders 
+WHERE order_date = '2023-05-01' 
+AND order_date = '2023-05-02';
+
+Problem
+One date cannot be both 2023-05-01 and 2023-05-02 at the same time.
+
+Correct Query
+SELECT * FROM orders 
+WHERE order_date = '2023-05-01' 
+OR order_date = '2023-05-02';
+
+==========
+
+3. Performance Optimization
+Query
+SELECT * FROM sales WHERE amount > 5000;
+
+Problem
+Query works correctly, but performance can improve using indexing.
+
+Optimization
+Create index on amount.
+
+Query
+
+CREATE INDEX idx_amount 
+ON sales(amount);
+
+SELECT * 
+FROM sales 
+WHERE amount > 5000;
+===========
+
+4. Data Type Mismatch
+Query
+SELECT * FROM products WHERE price = '100';
+
+Problem
+price is INT but value is written as string.
+
+Correct Query
+SELECT * FROM products WHERE price = 100;
+
+===========
+
+
+5. Incorrect Join Condition
+Query
+SELECT e.name, d.department_name
+FROM employees e
+INNER JOIN departments d 
+ON e.department_id = d.department_name;
+
+Problem
+department_id (INT) is compared with department_name (VARCHAR).
+
+Correct Query
+SELECT e.name, d.department_name
+FROM employees e
+INNER JOIN departments d 
+ON e.department_id = d.department_id;
+
+===========
+
+6. Incorrect NULL Handling
+Query
+SELECT * FROM customers 
+WHERE customer_name != NULL;
+
+Problem
+NULL cannot be checked using !=.
+
+Correct Query
+SELECT * FROM customers 
+WHERE customer_name IS NOT NULL;
+
+=============
+
+7. Incorrect Use of Aggregate Functions
+Query
+SELECT customer_id, SUM(amount)
+FROM sales;
+
+Problem
+Using aggregate function without GROUP BY.
+
+Correct Query
+SELECT customer_id, SUM(amount)
+FROM sales
+GROUP BY customer_id;
+
+=========
+
+8. Incorrect Column Selection
+Query
+SELECT order_id, customer_address
+FROM orders;
+
+Problem
+customer_address column does not exist in orders table.
+
+Correct Query
+SELECT order_id, customer_name
+FROM orders;
+
+========
+
+
+
+
+
+
