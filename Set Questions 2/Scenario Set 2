@@ -1,0 +1,177 @@
+Scenario 1: Identify Consistent High Performers
+
+Question
+Find employees who are receiving high salaries consistently.
+
+Tables Used
+employees
+
+Logic Explanation
+Use the employees table.
+Check employees with higher salaries.
+Sort salaries in descending order.
+
+Employees with top salaries are considered high performers.
+
+SQL Query
+SELECT employee_id, name, salary
+FROM employees
+WHERE salary > 50000
+ORDER BY salary DESC;
+
+Result:
+
+| employee_id | name    | salary |
+| ----------- | ------- | ------ |
+| 3           | Michael | 75000  |
+| 1           | John    | 60000  |
+| 4           | Sara    | 56000  |
+
+
+============
+
+Scenario 2: Customer Retention Analysis
+Question
+
+Find customers who made purchases recently.
+
+Tables Used
+
+sales
+customers
+
+Logic Explanation
+Use the sales table to identify customer purchases.
+Join with customers table using customer_id.
+Filter customers based on recent purchase dates.
+
+SQL Query
+SELECT c.customer_name, s.amount, s.sale_date
+FROM customers c
+JOIN sales s
+ON c.customer_id = s.customer_id
+WHERE s.sale_date >= '2023-03-15';
+
+| customer_name | amount | sale_date  |
+| ------------- | ------ | ---------- |
+| John Doe      | 4500   | 2023-03-15 |
+| Jane Smith    | 5500   | 2023-03-16 |
+| Alice Johnson | 7000   | 2023-03-17 |
+| NULL          | 3000   | 2023-03-18 |
+| Robert Brown  | 6000   | 2023-03-19 |
+
+==========
+
+Scenario 3: Identify Products with Declining Sales
+
+Question
+Find products with lower prices compared to expensive products.
+
+Tables Used
+products
+
+Logic Explanation
+Use the products table.
+Compare product prices.
+Filter products with lower values.
+
+SQL Query
+SELECT product_id, product_name, price
+FROM products
+WHERE price < 500;
+
+Result:
+
+| product_id | product_name | price |
+| ---------- | ------------ | ----- |
+| 3          | Tablet       | 300   |
+| 4          | Headphones   | 100   |
+| 5          | Smartwatch   | 200   |
+
+
+==========
+
+
+Scenario 4: Calculate Moving Average of Sales
+
+Question
+Calculate average sales amount.
+
+Tables Used
+sales
+
+Logic Explanation
+Use the AVG() aggregate function.
+Calculate average sales from the sales table.
+
+SQL Query
+SELECT AVG(amount) AS average_sales
+FROM sales;
+
+Result:
+
+| average_sales |
+| ------------- |
+| 5200          |
+
+==================
+
+Scenario 5: Detect Duplicate Records
+
+Question
+Find duplicate customer names.
+
+Tables Used
+customers
+
+Logic Explanation
+Group records using GROUP BY.
+Count customer names using COUNT(*).
+Use HAVING to identify duplicates.
+
+SQL Query
+SELECT customer_name, COUNT(*) AS duplicate_count
+FROM customers
+GROUP BY customer_name
+HAVING COUNT(*) > 1;
+
+Result:
+
+| customer_name              | duplicate_count |
+| -------------------------- | --------------- |
+| No duplicate records found |                 |
+
+=========
+
+Scenario 6: Identify Products with No Sales
+
+Question
+Find products that do not appear in sales records.
+
+Tables Used
+products
+sales
+
+Logic Explanation
+Use LEFT JOIN between products and sales.
+Products without matching sales records will return NULL.
+Filter NULL values to identify unsold products.
+
+SQL Query
+SELECT p.product_id, p.product_name
+FROM products p
+LEFT JOIN sales s
+ON p.product_id = s.sale_id
+WHERE s.sale_id IS NULL;
+
+Result:
+
+| product_id                                  | product_name |
+| ------------------------------------------- | ------------ |
+| No unsold products found in current dataset |              |
+
+
+===========
+
+
+
