@@ -1,0 +1,109 @@
+1. Retrieve all employees whose salary is greater than 60000
+
+Use the employees table.
+Filter employees whose salary is greater than 60000.
+Use the WHERE clause for filtering.
+
+SQL Query
+SELECT employee_id, name, salary
+FROM employees
+WHERE salary > 60000;
+
+Result:
+
+| employee_id | name    | salary |
+| ----------- | ------- | ------ |
+| 3           | Michael | 75000  |
+
+==========
+
+2. Calculate the total sales amount for each customer from the sales table
+
+Use the sales table.
+Group records using customer_id.
+Use SUM(amount) to calculate total sales.
+
+SQL Query
+SELECT customer_id, SUM(amount) AS total_sales
+FROM sales
+GROUP BY customer_id;
+
+Result:
+
+| customer_id | total_sales |
+| ----------- | ----------- |
+| 101         | 4500        |
+| 102         | 5500        |
+| 103         | 7000        |
+| 104         | 3000        |
+| 105         | 6000        |
+
+
+==========
+
+3. Retrieve the names and salaries of all employees working in the Finance department
+
+Use employees and departments tables.
+Join both tables using department_id.
+Filter department name as 'Finance'.
+
+SQL Query
+SELECT e.name, e.salary
+FROM employees e
+JOIN departments d
+ON e.department_id = d.department_id
+WHERE d.department_name = 'Finance';
+
+Result:
+
+| name  | salary |
+| ----- | ------ |
+| Emily | 48000  |
+| David | 49000  |
+
+
+==========
+
+4. Find the total sales amount made on 2023-03-17 from the sales table
+
+
+Use the sales table.
+Filter records for the date 2023-03-17.
+Use SUM(amount) to calculate total sales.
+
+SQL Query
+SELECT SUM(amount) AS total_sales
+FROM sales
+WHERE sale_date = '2023-03-17';
+
+Result:
+
+| total_sales |
+| ----------- |
+| 7000        |
+
+================
+
+5. Get the names of customers who have placed an order of more than 600 from the orders table
+
+
+Use the orders table.
+Filter orders where order_amount is greater than 600.
+Retrieve customer names.
+
+SQL Query
+SELECT customer_name, order_amount
+FROM orders
+WHERE order_amount > 600;
+
+Result:
+
+| customer_name | order_amount |
+| ------------- | ------------ |
+| Emily         | 700          |
+| Michael       | 1200         |
+| David         | 900          |
+
+===============
+
+
