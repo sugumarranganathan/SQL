@@ -1,0 +1,104 @@
+Which constraint is used to prevent duplicate values in a column?
+A) Primary Key
+B) Foreign Key
+C) Unique Key
+
+(Answer: C)
+
+Which SQL join combines all records from both tables, even if there are no matches?
+A) CROSS JOIN
+B) FULL OUTER JOIN
+C) INNER JOIN
+
+(Answer: B)
+
+Which join returns only the matching records from both tables?
+A) INNER JOIN
+B) LEFT JOIN
+C) RIGHT JOIN
+
+(Answer: A)
+
+Which SQL clause is used to filter records based on specific conditions?
+A) WHERE
+B) GROUP BY
+C) HAVING
+
+(Answer: A)
+
+When using an SQL join, which operator is used to specify the relationship between the columns?
+A) ON
+B) IN
+C) LIKE
+
+(Answer: A)
+
+Which SQL statement is used to retrieve data from a database?
+A) SELECT
+B) INSERT
+C) CREATE
+
+(Answer: A)
+
+Which SQL statement can create a Primary Key constraint?
+A) CREATE TABLE
+B) INSERT INTO
+C) DROP TABLE
+
+(Answer: A)
+
+Which command is used to permanently save all the changes made during a transaction?
+A) SAVEPOINT
+B) COMMIT
+C) ROLLBACK
+
+(Answer: B)
+
+What is a key characteristic of a Primary Key?
+A) Allows NULL values
+B) Ensures unique identification of records
+C) Used only for temporary tables
+
+(Answer: B)
+
+Which statement is classified as a DCL (Data Control Language) command?
+A) GRANT
+B) SELECT
+C) UPDATE
+
+(Answer: A)
+
+In SQL, a Foreign Key is used to:
+A) Delete duplicate records
+B) Establish a relationship between tables
+C) Create indexes
+
+(Answer: B)
+
+In SQL, what is the result of a CROSS JOIN?
+A) Returns only matching records
+B) Returns the Cartesian product of both tables
+C) Returns NULL for unmatched records
+
+(Answer: B)
+
+Can a Foreign Key contain NULL values?
+A) Yes
+B) No
+C) Only if explicitly defined
+
+(Answer: A)
+
+Which DML command is used to remove data from a table without deleting the table structure?
+A) DELETE
+B) DROP
+C) TRUNCATE
+
+(Answer: A)
+
+If a table has no matching records in another table, which join will still return records from the first table?
+A) RIGHT JOIN
+B) LEFT JOIN
+C) INNER JOIN
+
+(Answer: B)
