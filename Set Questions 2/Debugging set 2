@@ -1,1 +1,236 @@
-s
+employeesDB
+===========
+
+1. employees Table
+
+| employee_id | name    | age | salary | department_id |
+| ----------- | ------- | --- | ------ | ------------- |
+| 1           | John    | 30  | 60000  | 101           |
+| 2           | Emily   | 25  | 48000  | 102           |
+| 3           | Michael | 40  | 75000  | 103           |
+| 4           | Sara    | 35  | 56000  | 101           |
+| 5           | David   | 28  | 49000  | 102           |
+
+==========
+
+2. departments Table
+
+| department_id | department_name |
+| ------------- | --------------- |
+| 101           | HR              |
+| 102           | Finance         |
+| 103           | IT              |
+| 104           | Marketing       |
+
+
+=========
+
+3. customers Table
+
+| customer_id | customer_name |
+| ----------- | ------------- |
+| 101         | John Doe      |
+| 102         | Jane Smith    |
+| 103         | Alice Johnson |
+| 104         | NULL          |
+| 105         | Robert Brown  |
+
+
+=========
+
+4. sales Table
+
+| sale_id | customer_id | amount  | sale_date  |
+| ------- | ----------- | ------- | ---------- |
+| 1       | 101         | 4500.00 | 2023-03-15 |
+| 2       | 102         | 5500.00 | 2023-03-16 |
+| 3       | 103         | 7000.00 | 2023-03-17 |
+| 4       | 104         | 3000.00 | 2023-03-18 |
+| 5       | 105         | 6000.00 | 2023-03-19 |
+
+
+=======
+
+5. products Table
+
+| product_id | product_name | price |
+| ---------- | ------------ | ----- |
+| 1          | Laptop       | 1000  |
+| 2          | Mobile       | 500   |
+| 3          | Tablet       | 300   |
+| 4          | Headphones   | 100   |
+| 5          | Smartwatch   | 200   |
+
+
+=========
+
+6. orders Table
+
+| order_id | customer_name | order_date | order_amount |
+| -------- | ------------- | ---------- | ------------ |
+| 1        | John          | 2023-05-01 | 500          |
+| 2        | Emily         | 2023-05-02 | 700          |
+| 3        | Michael       | 2023-05-03 | 1200         |
+| 4        | Sara          | 2023-05-04 | 450          |
+| 5        | David         | 2023-05-05 | 900          |
+
+
+=========
+
+| Table       | Real-World Use          |
+| ----------- | ----------------------- |
+| employees   | Company staff records   |
+| departments | Department management   |
+| customers   | Customer information    |
+| sales       | Sales tracking          |
+| products    | Product catalog         |
+| orders      | Customer order tracking |
+
+============
+
+
+1. Retrieve Employees in Finance Department
+
+Incorrect Code
+SELECT name, salary 
+FROM employees
+WHERE department_id = 'Finance';
+
+Problem
+department_id contains numbers (101, 102, 103)
+'Finance' is a department name, not an ID
+
+Correct Code
+SELECT e.name, e.salary
+FROM employees e
+JOIN departments d
+ON e.department_id = d.department_id
+WHERE d.department_name = 'Finance';
+
+Result:
+
+| name  | salary |
+| ----- | ------ |
+| Emily | 48000  |
+| David | 49000  |
+
+
+===============
+
+2. Calculate Total Sales for Each Customer
+
+Incorrect Code
+SELECT customer_name, SUM(amount) AS total_sales
+FROM sales
+GROUP BY customer_name;
+
+Problem
+customer_name does not exist in sales table
+Need JOIN with customers table
+
+Correct Code
+SELECT c.customer_name, SUM(s.amount) AS total_sales
+FROM customers c
+JOIN sales s
+ON c.customer_id = s.customer_id
+GROUP BY c.customer_name;
+
+Result:
+
+| customer_name | total_sales |
+| ------------- | ----------- |
+| John Doe      | 4500        |
+| Jane Smith    | 5500        |
+| Alice Johnson | 7000        |
+| NULL          | 3000        |
+| Robert Brown  | 6000        |
+
+
+=============
+
+3. Find Products Priced Over the Average Price
+
+Incorrect Code
+SELECT product_name, price
+FROM products
+WHERE price > AVG(price);
+
+Problem
+Aggregate functions like AVG() cannot be used directly in WHERE
+
+Correct Code
+SELECT product_name, price
+FROM products
+WHERE price > (
+    SELECT AVG(price)
+    FROM products
+);
+
+Result:
+
+| product_name | price |
+| ------------ | ----- |
+| Laptop       | 1000  |
+| Mobile       | 500   |
+
+
+===========
+
+4. Get Customers Who Have Placed Orders Over 1000
+
+Incorrect Code
+
+SELECT DISTINCT customer_name
+FROM orders
+WHERE order_amount = 1000;
+
+Problem
+Question says “over 1000”
+= checks exactly 1000
+
+Correct Code
+SELECT DISTINCT customer_name
+FROM orders
+WHERE order_amount > 1000;
+
+Result:
+
+customer_name
+Michael
+
+============
+
+5. Find Total Sales for Each Customer
+
+Incorrect Code
+SELECT customer_id, SUM(amount) 
+FROM sales;
+
+Problem
+SUM(amount) is an aggregate function
+Need GROUP BY customer_id
+
+Correct Code
+SELECT customer_id, SUM(amount) AS total_sales
+FROM sales
+GROUP BY customer_id;
+
+Result:
+
+| customer_id | total_sales |
+| ----------- | ----------- |
+| 101         | 4500        |
+| 102         | 5500        |
+| 103         | 7000        |
+| 104         | 3000        |
+| 105         | 6000        |
+
+===========
+
+
+
+
+
+
+
+
